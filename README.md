@@ -13,8 +13,3 @@
 
 ## 补档的视频
 https://github.com/user-attachments/assets/8cb76924-928b-41bc-9205-803301fe200b
-
-
-## 参考项目：  
-
-[TsudaKageyu/minhook](https://github.com/TsudaKageyu/minhook.git)

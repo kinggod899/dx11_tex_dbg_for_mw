@@ -7,9 +7,12 @@
 **严禁**用于任何带有反作弊系统或最终用户许可协议（EULA）禁止修改的商业游戏。  
 因不当使用导致的封号、法律纠纷与本项目无关，由使用者自行承担全部风险与责任。  
 
-## 荣誉勋章
-
-<img width="480" alt="3B9FA55B195B7AA8B3B8CAB753AFBCC0" src="https://github.com/user-attachments/assets/06def154-8ec8-4aec-9004-55ffef85caed" />
+## 荣誉证书
+<div align="center">
+  <img width="480" alt="image" src="https://github.com/user-attachments/assets/b87d1007-2cf3-48fe-a48a-142f8f682278" />
+  <br>
+  <img width="480" alt="image" src="https://github.com/user-attachments/assets/06def154-8ec8-4aec-9004-55ffef85caed" />
+</div>
 
 ## 补档的视频
 完整视频：https://www.xcnahida.cn/?p=KrDu8yDD

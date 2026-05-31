@@ -1,0 +1,28 @@
+name: Auto Build DX11 Tool
+
+on:
+  workflow_dispatch: # 这个指令允许你手动点击按钮触发编译
+
+jobs:
+  build:
+    runs-on: windows-latest # 使用微软最新的 Windows 云服务器
+
+    steps:
+    - name: 获取源码及必须的依赖库
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive # 关键：这行会自动把缺失的第三方库拉下来
+
+    - name: 配置 CMake
+      run: cmake -B build
+
+    - name: 开始编译 (Release模式)
+      run: cmake --build build --config Release
+
+    - name: 打包生成的 exe 和 dll 文件
+      uses: actions/upload-artifact@v4
+      with:
+        name: MW_Tool_Release # 最终下载的压缩包名字
+        path: |
+          build/**/*.exe
+          build/**/*.dll

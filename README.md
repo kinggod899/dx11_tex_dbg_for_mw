@@ -16,6 +16,7 @@
 
 ## 补档的视频
 完整视频：https://www.xcnahida.cn/?p=KrDu8yDD
+（好像编译成功了，难道这ai竟如此好用）
 
 
 https://github.com/user-attachments/assets/8cb76924-928b-41bc-9205-803301fe200b

@@ -13,6 +13,18 @@ jobs:
       with:
         submodules: recursive # 关键：这行会自动把缺失的第三方库拉下来
 
+    - name: 诊断子模块问题
+      run: |
+        echo ===== .gitmodules 文件内容 =====
+        type .gitmodules 2>nul || echo .gitmodules 不存在！
+        echo.
+        echo ===== 子模块状态 =====
+        git submodule status
+        echo.
+        echo ===== libs 目录内容 =====
+        dir libs 2>nul || echo libs 目录不存在！
+      shell: cmd
+
     - name: 配置 CMake
       run: cmake -B build
 

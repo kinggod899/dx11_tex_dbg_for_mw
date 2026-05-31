@@ -1,20 +1,28 @@
 name: Auto Build DX11 Tool
 
 on:
-  workflow_dispatch: # 这个指令允许你手动点击按钮触发编译
+  workflow_dispatch:
 
 jobs:
   build:
-    runs-on: windows-latest # 使用微软最新的 Windows 云服务器
+    runs-on: windows-latest
 
     steps:
-    - name: 获取源码及必须的依赖库
+    - name: 获取源码
       uses: actions/checkout@v4
-      with:
-        submodules: recursive
+      # 不需要 submodules 了
 
-    - name: 手动拉取子模块（防止 checkout 静默失败）
-      run: git submodule update --init --recursive
+    - name: 手动下载 minhook（替代子模块）
+      run: |
+        # 下载 minhook 源码
+        curl -L -o minhook.zip https://github.com/TsudaKageyu/minhook/archive/refs/heads/master.zip
+        # 解压
+        tar -xf minhook.zip
+        # 移动到正确位置
+        move minhook-master libs\minhook
+        # 确认目录存在
+        if exist libs\minhook (echo [OK] libs\minhook 已就绪) else (echo [FAIL] 目录不存在 && exit 1)
+      shell: cmd
 
     - name: 配置 CMake
       run: cmake -B build
@@ -25,7 +33,7 @@ jobs:
     - name: 打包生成的 exe 和 dll 文件
       uses: actions/upload-artifact@v4
       with:
-        name: MW_Tool_Release # 最终下载的压缩包名字
+        name: MW_Tool_Release
         path: |
           build/**/*.exe
           build/**/*.dll

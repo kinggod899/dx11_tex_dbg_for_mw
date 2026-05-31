@@ -10,18 +10,16 @@ jobs:
     steps:
     - name: 获取源码
       uses: actions/checkout@v4
-      # 不需要 submodules 了
 
     - name: 手动下载 minhook（替代子模块）
       run: |
-        # 下载 minhook 源码
+        echo 正在下载 minhook...
         curl -L -o minhook.zip https://github.com/TsudaKageyu/minhook/archive/refs/heads/master.zip
-        # 解压
+        echo 正在解压...
         tar -xf minhook.zip
-        # 移动到正确位置
+        echo 移动到 libs\minhook...
         move minhook-master libs\minhook
-        # 确认目录存在
-        if exist libs\minhook (echo [OK] libs\minhook 已就绪) else (echo [FAIL] 目录不存在 && exit 1)
+        if exist libs\minhook (echo [OK] 下载成功) else (echo [FAIL] 目录不存在 && exit 1)
       shell: cmd
 
     - name: 配置 CMake

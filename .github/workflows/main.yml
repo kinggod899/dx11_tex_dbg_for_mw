@@ -11,19 +11,10 @@ jobs:
     - name: 获取源码及必须的依赖库
       uses: actions/checkout@v4
       with:
-        submodules: recursive # 关键：这行会自动把缺失的第三方库拉下来
+        submodules: recursive
 
-    - name: 诊断子模块问题
-      run: |
-        echo ===== .gitmodules 文件内容 =====
-        type .gitmodules 2>nul || echo .gitmodules 不存在！
-        echo.
-        echo ===== 子模块状态 =====
-        git submodule status
-        echo.
-        echo ===== libs 目录内容 =====
-        dir libs 2>nul || echo libs 目录不存在！
-      shell: cmd
+    - name: 手动拉取子模块（防止 checkout 静默失败）
+      run: git submodule update --init --recursive
 
     - name: 配置 CMake
       run: cmake -B build
